@@ -1,7 +1,7 @@
-var userInput;
+var dashedWord;
+var word = "nautilus";
 var dashedWord;
 var joinWord;
-var word = "nautilus"
 var guesses = 13;
 var wordPointer = document.getElementById("word");
 
@@ -16,57 +16,29 @@ function dashedWord(chosenWord) {
 
 function replaceAt(index, replacement) {
     dashedWord[index] = replacement;
-    console.log("dashedWord: " + dashedWord);
     joinWord = dashedWord.join(" ");
-    console.log("joinWord: " + joinWord);
-    console.log("replaceAt() function called");
     wordPointer.innerHTML = joinWord;
 }
 
-function correctLetter() {
-    for(var i = 0; i < dashedWord.length; i++) {
-        
+function correctLetter(chosenWord, replacement) {
+    console.log("correctLetter() function called...");
+    var charArray = word.split("");
+    for(var i = 0; i < charArray.length; i++) {
+        if (replacement === charArray[i].toLowerCase()) {
+            replaceAt(i, replacement);
+        }
     }
 }
 dashedWord(word);
 
 document.onkeyup = function(event) {
-    userInput = event.key;
+    var userInput = event.key;
+    console.log("user pressed key...");
+    correctLetter(word, userInput);
 
     var winPointer = document.getElementById("wins");
 
     var lettersGuessedPOinter = document.getElementById("lettersGuessed");
-
-    if (userInput === 'n') {
-        console.log("n key pressed...");
-        replaceAt(0, 'n');
-    }
-    else if (userInput === 'a') {
-        replaceAt(1, 'a');
-        console.log("a key pressed...");
-    }
-    else if (userInput === 'u') {
-        replaceAt(2, 'u');
-        replaceAt(6, 'u');
-        console.log("u key pressed...");
-    }
-    else if (userInput === 't') {
-        replaceAt(3, 't');
-        console.log("t key pressed...");
-    }
-    else if (userInput === 'i') {
-        replaceAt(4, 'i');
-        console.log("i key pressed...");
-    }
-    else if (userInput === 'l') {
-        replaceAt(5, 'l');
-        console.log("l key pressed...");
-    }
-    else if (userInput === 's') {
-        replaceAt(7, 's');
-        console.log("s key pressed...");
-    }
-
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
 }
