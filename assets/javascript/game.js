@@ -1,15 +1,21 @@
 var userInput;
+var word = "nauticus"
 var guesses = 13;
 
-function replaceAt(index, replacement) {
-    var wordPointer = document.getElementById("word");
-    var word = wordPointer.textContent;
-    word[index] = replacement;
-    console.log(word);
-    wordPointer.innerHTML = word;
-    console.log("function is called");
+function dashedWord(chosenWord) {
+    var dashedWord = chosenWord.split("");
+    for (var i = 0; i < dashedWord.length; i++) {
+        dashedWord[i] = " _";
+    }
+    var joinWord = dashedWord.join("");
+    return joinWord;
+}
+
+function correctLetter(index, replacement) {
 
 }
+var wordPointer = document.getElementById("word");
+wordPointer.innerHTML = dashedWord(word);
 
 document.onkeyup = function(event) {
     userInput = event.key;
