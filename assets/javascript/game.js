@@ -4,6 +4,8 @@ var dashedWord;
 var joinWord;
 var guesses = 13;
 var wordPointer = document.getElementById("word");
+var winPointer = document.getElementById("wins");
+var lettersGuessedPointer = document.getElementById("lettersGuessed");
 
 function dashedWord(chosenWord) {
     dashedWord = chosenWord.split("");
@@ -29,16 +31,19 @@ function correctLetter(chosenWord, replacement) {
         }
     }
 }
+
+function lettersGuessed(letter) {
+    var letterGuessed = document.createTextNode(letter);
+    lettersGuessedPointer.innerHTML.appendChild(letterGuessed);
+}
 dashedWord(word);
 
 document.onkeyup = function(event) {
     var userInput = event.key;
     console.log("user pressed key...");
+    lettersGuessed(userInput);
     correctLetter(word, userInput);
 
-    var winPointer = document.getElementById("wins");
-
-    var lettersGuessedPOinter = document.getElementById("lettersGuessed");
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
 }
