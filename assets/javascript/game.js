@@ -22,6 +22,12 @@ function replaceAt(index, replacement) {
     console.log("replaceAt() function called");
     wordPointer.innerHTML = joinWord;
 }
+
+function correctLetter() {
+    for(var i = 0; i < dashedWord.length; i++) {
+        
+    }
+}
 dashedWord(word);
 
 document.onkeyup = function(event) {
