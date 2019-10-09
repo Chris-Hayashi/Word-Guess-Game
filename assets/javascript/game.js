@@ -33,8 +33,10 @@ function correctLetter(chosenWord, replacement) {
 }
 
 function lettersGuessed(letter) {
+    var node = document.createElement("p");
     var letterGuessed = document.createTextNode(letter);
-    lettersGuessedPointer.innerHTML.appendChild(letterGuessed);
+    node.appendChild(letterGuessed);
+    lettersGuessedPointer.appendChild(node);
 }
 dashedWord(word);
 
