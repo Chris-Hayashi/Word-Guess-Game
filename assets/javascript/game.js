@@ -38,7 +38,6 @@ function lettersGuessed(letter) {
     node.appendChild(letterGuessed);
     lettersGuessedPointer.appendChild(node);
 }
-dashedWord(word);
 
 document.onkeyup = function(event) {
     var userInput = event.key;
@@ -49,3 +48,5 @@ document.onkeyup = function(event) {
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
 }
+
+dashedWord(word);
