@@ -1,3 +1,7 @@
+span {
+    display: inline-block;
+}
+
 #lettersGuessed {
     display: inline-block;
 }

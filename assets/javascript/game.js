@@ -33,8 +33,8 @@ function correctLetter(chosenWord, replacement) {
 }
 
 function lettersGuessed(letter) {
-    var node = document.createElement("p");
-    var letterGuessed = document.createTextNode(letter);
+    var node = document.createElement("span");
+    var letterGuessed = document.createTextNode(letter + " ");
     node.appendChild(letterGuessed);
     lettersGuessedPointer.appendChild(node);
 }
