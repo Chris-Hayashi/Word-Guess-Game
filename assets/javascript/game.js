@@ -2,6 +2,7 @@ var dashedWord;
 var word = "nautilus";
 var dashedWord;
 var joinWord;
+var wins = 0;
 var guesses = 13;
 var wordPointer = document.getElementById("word");
 var winPointer = document.getElementById("wins");
@@ -20,6 +21,20 @@ function replaceAt(index, replacement) {
     dashedWord[index] = replacement;
     joinWord = dashedWord.join(" ");
     wordPointer.innerHTML = joinWord;
+    for (var i = 0; i < joinWord.length; i++) {
+        if (joinWord[i] !== "_") {
+            if (i === (joinWord.length - 1)){
+                wins++;
+                winPointer.textContent = wins;
+                break;
+            }
+            continue;
+        }
+        else {
+            break;
+        }
+
+    }
 }
 
 function correctLetter(chosenWord, replacement) {
@@ -47,6 +62,9 @@ document.onkeyup = function(event) {
 
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
+    if (guesses <= 0) {
+        
+    }
 }
 
 dashedWord(word);
