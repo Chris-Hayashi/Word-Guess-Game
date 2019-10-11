@@ -7,6 +7,7 @@ var guesses = 13;
 var wordPointer = document.getElementById("word");
 var winPointer = document.getElementById("wins");
 var lettersGuessedPointer = document.getElementById("lettersGuessed");
+var messagePointer = document.getElementById("message");
 
 function dashedWord(chosenWord) {
     dashedWord = chosenWord.split("");
@@ -62,8 +63,8 @@ document.onkeyup = function(event) {
 
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
-    if (guesses <= 0) {
-        
+    if (guesses == 0) {
+        messagePointer.textContent = "You Lose!!! You ran out of guesses!";
     }
 }
 
