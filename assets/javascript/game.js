@@ -27,6 +27,7 @@ function replaceAt(index, replacement) {
             if (i === (joinWord.length - 1)){
                 wins++;
                 winPointer.textContent = wins;
+                messagePointer.textContent = "Congratulations!!! You Win!!!";
                 break;
             }
             continue;
