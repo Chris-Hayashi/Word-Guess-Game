@@ -1,5 +1,6 @@
 var dashedWord;
-var word = "nautilus";
+var words = ["nautilus", "kraken", "davyjones"];
+var currentWord;
 var dashedWord;
 var joinWord;
 var wins = 0;
@@ -41,7 +42,7 @@ function replaceAt(index, replacement) {
 
 function correctLetter(chosenWord, replacement) {
     console.log("correctLetter() function called...");
-    var charArray = word.split("");
+    var charArray = currentWord.split("");
     for(var i = 0; i < charArray.length; i++) {
         if (replacement === charArray[i].toLowerCase()) {
             replaceAt(i, replacement);
@@ -58,9 +59,9 @@ function lettersGuessed(letter) {
 
 document.onkeyup = function(event) {
     var userInput = event.key;
-    console.log("user pressed key...");
+    
     lettersGuessed(userInput);
-    correctLetter(word, userInput);
+    correctLetter(currentWord, userInput);
 
     guesses--;
     document.getElementById("guesses").innerHTML = guesses;
@@ -69,4 +70,5 @@ document.onkeyup = function(event) {
     }
 }
 
-dashedWord(word);
+currentWord = words[Math.floor(Math.random() * words.length)];
+dashedWord(currentWord);
