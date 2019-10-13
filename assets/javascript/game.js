@@ -12,11 +12,14 @@ var messagePointer = document.getElementById("message");
 
 function dashedWord(chosenWord) {
     dashedWord = chosenWord.split("");
+    if (dashedWord.length > chosenWord.length) {
+        dashedWord.splice(chosenWord.length, dashedWord.length - chosenWord.length);
+    }
     for (var i = 0; i < dashedWord.length; i++) {
         dashedWord[i] = "_";
     }
     joinWord = dashedWord.join(" ");
-    wordPointer.innerHTML = joinWord;
+    wordPointer.textContent = joinWord;
 }
 
 function replaceAt(index, replacement) {
@@ -29,6 +32,8 @@ function replaceAt(index, replacement) {
                 wins++;
                 winPointer.textContent = wins;
                 messagePointer.textContent = "Congratulations!!! You Win!!!";
+                guesses = 13;
+                document.getElementById("guesses").innerHTML = guesses;
                 break;
             }
             continue;
@@ -51,8 +56,12 @@ function correctLetter(chosenWord, replacement) {
 }
 
 function lettersGuessed(letter) {
+    for (var i = 0; i < lettersGuessedPointer.textContent.length; i++) {
+        if (lettersGuessedPointer.textContent[i] === letter)
+            return;
+    }
     var node = document.createElement("span");
-    var letterGuessed = document.createTextNode(letter + " ");
+    var letterGuessed = document.createTextNode(letter + "  ");
     node.appendChild(letterGuessed);
     lettersGuessedPointer.appendChild(node);
 }
@@ -72,6 +81,10 @@ document.onkeyup = function(event) {
     }
 }
 
-for (var i = 0; i < words.length; i++);
-currentWord = words[Math.floor(Math.random() * words.length)];
-dashedWord(currentWord);
+    // for (var i = 0; i < words.length; i++) {
+    //     var done = false;
+    currentWord = words[Math.floor(Math.random() * words.length)];
+    dashedWord(currentWord);
+
+
+    
