@@ -25,7 +25,7 @@ function replaceAt(index, replacement) {
     wordPointer.innerHTML = joinWord;
     for (var i = 0; i < joinWord.length; i++) {
         if (joinWord[i] !== "_") {
-            if (i === (joinWord.length - 1)){
+            if (i === (joinWord.length - 1) && messagePointer.textContent !== "Congratulations!!! You Win!!!"){
                 wins++;
                 winPointer.textContent = wins;
                 messagePointer.textContent = "Congratulations!!! You Win!!!";
@@ -67,8 +67,11 @@ document.onkeyup = function(event) {
     document.getElementById("guesses").innerHTML = guesses;
     if (guesses == 0) {
         messagePointer.textContent = "You Lose!!! You ran out of guesses!";
+        guesses = 13;
+        document.getElementById("guesses").innerHTML = guesses;
     }
 }
 
+for (var i = 0; i < words.length; i++);
 currentWord = words[Math.floor(Math.random() * words.length)];
 dashedWord(currentWord);
